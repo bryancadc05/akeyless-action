@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - 'investigation/*'
+    - 'tests/*'
 
 jobs:
 
@@ -167,6 +167,7 @@ jobs:
         echo "TTL_IN_MINUTES: ${{ env.SQL_ttl_in_minutes }}"
         echo "PASSWORD: ${{ env.SQL_password }}"
 
+ 
 ##########################################################
 ########### GitHub Dynamic Secrets example #############
 ##########################################################
