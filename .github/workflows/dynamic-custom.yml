@@ -6,8 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: 
-      - 'custom-api-wip'
-      #- 'main'
+      - 'main'
     paths-ignore:
       - 'README.md'
 
