@@ -168,21 +168,22 @@ If you want those secrets as separate environment variables, there's one extra s
         access-id: ${{ secrets.AKEYLESS_ACCESS_ID }} # Looks like p-fq3afjjxv839
         dynamic-secrets: '{"/path/to/dynamic/aws/secret":"aws_dynamic_secrets"}'
         
-# **** KEY TAKEAWAY - EXPORT DYNAMIC SECRET's KEYS TO ENV VARS *****
+# ********* KEY TAKEAWAY  ********* #
+# STEP 1 - EXPORT DYNAMIC SECRET's KEYS TO ENV VARS
     - name: Export Secrets to Environment
       run: |
-        echo '${{ steps.fetch-dynamic-secrets.outputs.aws_dynamic_secrets }}' | jq -r 'to_entries|map("AWS_\(.key)=\(.value|tostring)")|.[]' >> $GITHUB_ENV
+        echo '${{ steps.fetch-dynamic-secrets.outputs.aws_dynamic_secrets }}' | jq -r 'to_entries|map("AWS_\(.key|ascii_upcase)=\(.value|tostring)")|.[]' >> $GITHUB_ENV
 
-# You can now access each secret separately as environment variables
+# STEP 2 - You can now access each secret separately as environment variables
     - name: Verify Vars
       run: |
-        echo "access_key_id: ${{ env.AWS_access_key_id }}"
-        echo "id: ${{ env.AWS_id }}"
-        echo "secret_access_key: ${{ env.AWS_secret_access_key }}"
-        echo "security_token: ${{ env.AWS_security_token }}"
-        echo "ttl_in_minutes: ${{ env.AWS_ttl_in_minutes }}"
-        echo "type: ${{ env.AWS_type }}"
-        echo "user: ${{ env.AWS_user }}"
+        echo "access_key_id: ${{ env.AWS_ACCESS_KEY_ID }}"
+        echo "id: ${{ env.AWS_ID }}"
+        echo "secret_access_key: ${{ env.AWS_SECRET_ACCESS_KEY }}"
+        echo "security_token: ${{ env.AWS_SECURITY_TOKEN }}"
+        echo "ttl_in_minutes: ${{ env.AWS_TTL_IN_MINUTES }}"
+        echo "type: ${{ env.AWS_TYPE }}"
+        echo "user: ${{ env.AWS_USER }}"
 ```
 
 #### Parsed Output
