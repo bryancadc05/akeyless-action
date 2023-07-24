@@ -1,17 +1,15 @@
-name: 'CI New Feature Tests'
+# This workflow is to run tests for features, invesatigations or anything that shouldn't be done on main
+name: 'Ongoing work'
 
 on:
   workflow_dispatch:
   push:
     branches:
-    - 'feature/*'
+    - 'features/*'
+    - 'investigations/*'
+    - 'issues/*'
 
 jobs:
-
-##########################################################
-########## TESTS for IN-DEVELOPMENT FEATURES #############
-##########################################################
-
   github_dynamic_secrets_prefixed:
     runs-on: ubuntu-latest
     name: GitHub dynamic secrets (parsed with prefix)
