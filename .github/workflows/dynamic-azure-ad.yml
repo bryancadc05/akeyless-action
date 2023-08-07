@@ -30,16 +30,19 @@ jobs:
         dynamic-secrets: '{"/DevTools/dvlup-azure":"azure_ad_dynamic_secret"}'
 
     - name: Learn keys
-      run: echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq 'keys[]'
+      run: |
+        echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq 'keys[]'
+        echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.secret | keys[]'
 
     # - name: Verify Job Outputs using jq
     #   run: |
     #     echo "Your job output secret is ${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}"
-    #     jq 'keys'
     #     echo "Manually parsed ID:" 
     #     echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.id'
-    #     echo "Manually parsed TOKEN:" 
-    #     echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.token'
+    #     echo "Manually parsed MSG:" 
+    #     echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.msg'
+    #     echo "Manually parsed secret:" 
+    #     echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.secret'
     #     echo "Manually parsed TTL_IN_MINUTES:" 
     #     echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.ttl_in_minutes'
 
@@ -48,8 +51,10 @@ jobs:
     #     echo "Your environment secret is ${{ env.azure_ad_dynamic_secret }}"
     #     echo "Manually parsed ID:"
     #     echo '${{ env.azure_ad_dynamic_secret }}' | jq '.id'
-    #     echo "Manually parsed TOKEN:"
-    #     echo '${{ env.azure_ad_dynamic_secret }}' | jq '.token'
+    #     echo "Manually parsed MSG:"
+    #     echo '${{ env.azure_ad_dynamic_secret }}' | jq '.msg'
+    #     echo "Manually parsed SECRET:"
+    #     echo '${{ env.azure_ad_dynamic_secret }}' | jq '.secret'
     #     echo "Manually parsed TTL_IN_MINUTES:"
     #     echo '${{ env.azure_ad_dynamic_secret }}' | jq '.ttl_in_minutes'
 
@@ -61,7 +66,8 @@ jobs:
     # - name: EXTRA (part 2) - Verify EXTRA 1's Exported Variables
     #   run: |
     #     echo "id: ${{ env.AKEYLESS_AZURE_AD_ID }}"
-    #     echo "token: ${{ env.AKEYLESS_AZURE_AD_TOKEN }}"
+    #     echo "msg: ${{ env.AKEYLESS_AZURE_AD_MSG }}"
+    #     echo "secret: ${{ env.AKEYLESS_AZURE_AD_SECRET }}"
     #     echo "ttl_in_minutes: ${{ env.AKEYLESS_AZURE_AD_TTL_IN_MINUTES }}"
   
   # ##########
@@ -90,13 +96,15 @@ jobs:
   #   - name: Verify Job Outputs (to known field names, pre-parsed)
   #     run: |
   #       echo "ID: ${{ steps.fetch-secrets.outputs.id }}" 
-  #       echo "TOKEN: ${{ steps.fetch-secrets.outputs.token }}" 
+  #       echo "MSG: ${{ steps.fetch-secrets.outputs.msg }}"
+  #       echo "SECRET: ${{ steps.fetch-secrets.outputs.secret }}"
   #       echo "TTL_IN_MINUTES: ${{ steps.fetch-secrets.outputs.ttl_in_minutes }}"
 
   #   - name: Verify Environment Variables (to known field names, pre-parsed)
   #     run: |
   #       echo "ID: ${{ env.id }}"
-  #       echo "TOKEN: ${{ env.token }}"
+  #       echo "MSG: ${{ env.msg }}"
+  #       echo "SECRET: ${{ env.secret }}"
   #       echo "TTL_IN_MINUTES: ${{ env.ttl_in_minutes }}"
   
   # ##########
@@ -125,11 +133,13 @@ jobs:
   #   - name: Verify Job Outputs (to known field names, pre-parsed with prefix)
   #     run: |
   #       echo "ID: ${{ steps.fetch-secrets.outputs.AZURE_AD_id }}" 
-  #       echo "TOKEN: ${{ steps.fetch-secrets.outputs.AZURE_AD_token }}" 
+  #       echo "MSG: ${{ steps.fetch-secrets.outputs.AZURE_AD_msg }}"
+  #       echo "SECRET: ${{ steps.fetch-secrets.outputs.AZURE_AD_secret }}"
   #       echo "TTL_IN_MINUTES: ${{ steps.fetch-secrets.outputs.AZURE_AD_ttl_in_minutes }}" 
 
   #   - name: Verify Environment Variables (to known field names, pre-parsed with prefix)
   #     run: |
   #       echo "ID: ${{ env.AZURE_AD_id }}"
-  #       echo "TOKEN: ${{ env.AZURE_AD_token }}"
+  #       echo "MSG: ${{ env.AZURE_AD_msg }}"
+  #       echo "SECRET: ${{ env.AZURE_AD_secret }}"
   #       echo "TTL_IN_MINUTES: ${{ env.AZURE_AD_ttl_in_minutes }}"
