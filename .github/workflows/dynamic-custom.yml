@@ -11,9 +11,12 @@ on:
       - 'README.md'
 
 jobs:
-  ##########
-  # Option 1 - the default behavior gets the secret as a JSON string, it's the consumer's responsibility to parse it
-  ##########
+  ##############################
+  ########## Option 1 ########## 
+  ##############################
+  # - Uses default behavior 
+  # The response from Akeyless is kept in it's original JSON string. It is then your responsibility to correctly parse it.
+
   custom_producer_dynamic_secrets:
     runs-on: ubuntu-latest
     name: Custom producer dynamic secrets (default)
@@ -54,9 +57,13 @@ jobs:
       run: |
         echo "AKEYLESS_password = ${{ env.AKEYLESS_password }}"
 
-  ##########
-  # Option 2 - Use 'parse-dynamic-secrets: true' to automatically parse the JSON string into individual outputs
-  ##########
+
+  ##############################
+  ########## Option 2 ########## 
+  ##############################
+  # - Uses 'parse-dynamic-secrets: true' 
+  # This will automatically parse the JSON string into individual outputs
+
   custom_producer_dynamic_secrets_parsed:
     runs-on: ubuntu-latest
     name: Custom producer dynamic secrets (parsed)
@@ -85,9 +92,14 @@ jobs:
       run: |
         echo "PASSWORD: ${{ env.password }}"
 
-  ##########
-  # Option 3 - This is the same as Option 2, but with a prefix
-  ##########
+
+  ##############################
+  ########## Option 3 ##########
+  ##############################
+  # - Uses 'parse-dynamic-secrets: true'
+  # - Uses 'WEB' as a prefix to the output names
+  # This is the same as Option 2, but with a known prefix to help avoid conflicts with other variable names
+
   custom_producer_dynamic_secrets_prefixed:
     runs-on: ubuntu-latest
     name: Customustom producer dynamic secrets (parsed with prefix)
