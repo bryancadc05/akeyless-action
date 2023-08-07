@@ -4,11 +4,12 @@ This action will login to AKeyless using JWT or IAM authentication and then fetc
 
 | Workflow | Status |
 |----------|--------|
-| Static Secrets | [![Static](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/static-secrets.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/static-secrets.yml) |
-| SQL Server Dynamic Secrets | [![Static](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-sqlserver.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-sqlserver.yml) |
-| GitHub Dynamic Secrets | [![Static](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-github.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-github.yml) |
-| Custom Producer Dynamic Secrets | [![Static](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-custom.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-custom.yml) |
-| AWS Dynamic Secrets | [![Static](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-aws.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-aws.yml) |
+| Static Secrets | [![Static Secrets](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/static-secrets.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/static-secrets.yml) |
+| Azure AD Dynamic Secrets | [![Azure AD Dynamic Secrets](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-azure-ad.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-azure-ad.yml) |
+| SQL Server Dynamic Secrets | [![MSSQL Dynamic Secrets](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-sqlserver.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-sqlserver.yml) |
+| GitHub Dynamic Secrets | [![GitHub Dynamic Secrets](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-github.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-github.yml) |
+| Custom Producer Dynamic Secrets | [![Custom Producer Dynamic Secrets](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-custom.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-custom.yml) |
+| AWS Dynamic Secrets | [![AWS Dynamic Secrets](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-aws.yml/badge.svg)](https://github.com/LanceMcCarthy/akeyless-action/actions/workflows/dynamic-aws.yml) |
 
 ### Inputs
 
