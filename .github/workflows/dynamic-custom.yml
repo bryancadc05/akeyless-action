@@ -5,10 +5,11 @@ name: 'Custom Producer Dynamic Secrets'
 on:
   workflow_dispatch:
   push:
-    branches: 
-      - 'main'
-    paths-ignore:
-      - 'README.md'
+    branches:
+      - main
+    paths:
+      - 'src/**/*'
+      - '.github/workflows/dynamic-custom.yml'
 
 jobs:
   ##############################
