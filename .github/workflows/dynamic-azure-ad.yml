@@ -29,9 +29,9 @@ jobs:
         access-id: ${{ secrets.AKEYLESS_ACCESS_ID }}
         dynamic-secrets: '{"/DevTools/dvlup-azure":"azure_ad_dynamic_secret"}'
 
-    - name: Verify Job Outputs using jq
-      run: |
-        echo "Your job output secret is ${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}"
+    # - name: Verify Job Outputs using jq
+    #   run: |
+    #     echo "Your job output secret is ${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}"
         # echo "Manually parsed ID:" 
         # echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.id'
         # echo "Manually parsed TOKEN:" 
@@ -39,9 +39,9 @@ jobs:
         # echo "Manually parsed TTL_IN_MINUTES:" 
         # echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.ttl_in_minutes'
 
-    - name: Verify Environment Variables using jq
-      run: |
-        echo "Your environment secret is ${{ env.azure_ad_dynamic_secret }}"
+    # - name: Verify Environment Variables using jq
+    #   run: |
+    #     echo "Your environment secret is ${{ env.azure_ad_dynamic_secret }}"
         # echo "Manually parsed ID:"
         # echo '${{ env.azure_ad_dynamic_secret }}' | jq '.id'
         # echo "Manually parsed TOKEN:"
