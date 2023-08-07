@@ -9,9 +9,12 @@ on:
       - 'README.md'
 
 jobs:
-  ##########
-  # Option 1 - the default behavior gets the secret as a JSON string, it's the consumer's responsibility to parse it
-  ##########
+  ##############################
+  ########## Option 1 ########## 
+  ##############################
+  # - Uses default behavior 
+  # The response from Akeyless is kept in it's original JSON string. It is then your responsibility to correctly parse it.
+  
   sql_dynamic_secrets:
     runs-on: ubuntu-latest
     name: SQL dynamic secrets (default)
@@ -67,9 +70,13 @@ jobs:
         echo "AKEYLESS_password = ${{ env.AKEYLESS_password }}"
         echo "AKEYLESS_ttl_in_minutes = ${{ env.AKEYLESS_ttl_in_minutes }}"
 
-  ##########
-  # Option 2 - Use 'parse-dynamic-secrets: true' to automatically parse the JSON string into individual outputs
-  ##########
+
+  ##############################
+  ########## Option 2 ########## 
+  ##############################
+  # - Uses 'parse-dynamic-secrets: true' 
+  # This will automatically parse the JSON string into individual outputs
+
   sql_dynamic_secrets_parsed:
     runs-on: ubuntu-latest
     name: SQL dynamic secrets (parsed)
@@ -104,9 +111,14 @@ jobs:
         echo "TTL_IN_MINUTES: ${{ env.ttl_in_minutes }}"
         echo "PASSWORD: ${{ env.password }}"
 
-  ##########
-  # Option 3 - This is the same as Option 2, but with a prefix
-  ##########
+
+  ##############################
+  ########## Option 3 ##########
+  ##############################
+  # - Uses 'parse-dynamic-secrets: true'
+  # - Uses 'SQL' as a prefix to the output names
+  # This is the same as Option 2, but with a known prefix to help avoid conflicts with other variable names
+
   sql_dynamic_secrets_prefixed:
     runs-on: ubuntu-latest
     name: SQL dynamic secrets (parsed with prefix)
