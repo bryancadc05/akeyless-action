@@ -4,7 +4,11 @@ name: 'GitHub Dynamic Secrets'
 on:
   workflow_dispatch:
   push:
-    branches: ['main']
+    branches:
+      - main
+    paths:
+      - 'src/**/*'
+      - '.github/workflows/dynamic-github.yml'
 
 jobs:
   ##############################
