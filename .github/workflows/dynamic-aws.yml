@@ -8,6 +8,9 @@ on:
   #     - 'README.md'
 
 jobs:
+  # - Uses 'parse-dynamic-secrets: true' 
+  # This will automatically parse the JSON string into individual outputs
+
   aws_dynamic_secrets:
     runs-on: ubuntu-latest
     name: AWS dynamic secrets (default)
