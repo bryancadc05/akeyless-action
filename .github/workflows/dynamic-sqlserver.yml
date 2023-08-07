@@ -4,9 +4,11 @@ name: 'MSSQL Dynamic Secrets'
 on:
   workflow_dispatch:
   push:
-    branches: ['main']
-    paths-ignore:
-      - 'README.md'
+    branches:
+      - main
+    paths:
+      - 'src/**/*'
+      - '.github/workflows/dynamic-sqlserver.yml'
 
 jobs:
   ##############################
