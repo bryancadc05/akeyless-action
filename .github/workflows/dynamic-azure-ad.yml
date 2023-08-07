@@ -32,36 +32,14 @@ jobs:
         access-id: ${{ secrets.AKEYLESS_ACCESS_ID }}
         dynamic-secrets: '{"/DevTools/dvlup-azure":"azure_ad_dynamic_secret"}'
 
-    - name: Verify Job Outputs using jq
-      run: |
-        echo "Job outputs.azure_ad_dynamic_secret: ${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}"
-        echo "Manually parsed ID:" 
-        echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.id'
-        echo "Manually parsed MSG:" 
-        echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.msg'
-        echo "Manually parsed secret:" 
-        echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.secret'
-        echo "Manually parsed TTL_IN_MINUTES:" 
-        echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq '.ttl_in_minutes'
+    # See other example workflows on how to manually parse each key value => https://github.com/LanceMcCarthy/akeyless-action/blob/main/.github/workflows/dynamic-github.yml#L35-L53
 
-    - name: Verify Environment Variables using jq
-      run: |
-        echo "Job-set environment variable 'azure_ad_dynamic_secret': ${{ env.azure_ad_dynamic_secret }}"
-        echo "Manually parsed ID:"
-        echo '${{ env.azure_ad_dynamic_secret }}' | jq '.id'
-        echo "Manually parsed MSG:"
-        echo '${{ env.azure_ad_dynamic_secret }}' | jq '.msg'
-        echo "Manually parsed SECRET:"
-        echo '${{ env.azure_ad_dynamic_secret }}' | jq '.secret'
-        echo "Manually parsed TTL_IN_MINUTES:"
-        echo '${{ env.azure_ad_dynamic_secret }}' | jq '.ttl_in_minutes'
-
-    # Extra 1 & 2 Another way to get the secret values is to use jq and export them to custom env vars directly
-    - name: EXTRA (part 1) - Export Secrets to Environment using jq
+    # For this demo we'll just use jq and export them to custom env vars directly
+    - name: Export Secrets to Environment using jq
       run: |
         echo '${{ steps.fetch-secrets.outputs.azure_ad_dynamic_secret }}' | jq -r 'to_entries|map("AKEYLESS_AZURE_AD_\(.key|ascii_upcase)=\(.value|tostring)")|.[]' >> $GITHUB_ENV
     
-    - name: EXTRA (part 2) - Verify EXTRA 1's Exported Variables
+    - name: Verify exported variables
       run: |
         echo "id: ${{ env.AKEYLESS_AZURE_AD_ID }}"
         echo "msg: ${{ env.AKEYLESS_AZURE_AD_MSG }}"
