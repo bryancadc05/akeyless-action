@@ -8,7 +8,9 @@ on:
     - 'features/*'
     - 'investigations/*'
     - 'issues/*'
-
+    paths:
+      - 'src/**/*'
+      - '.github/workflows/ci-work.yml'
 jobs:
   ##############################
   ########## Option 1 ########## 
