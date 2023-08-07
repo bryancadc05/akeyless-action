@@ -2,10 +2,12 @@ name: 'AWS Dynamic Secrets'
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: ['main']
-  #   paths-ignore:
-  #     - 'README.md'
+#  push:
+#    branches:
+#      - main
+#    paths:
+#      - 'src/**/*'
+#      - '.github/workflows/dynamic-aws.yml'
 
 jobs:
   # - Uses 'parse-dynamic-secrets: true' 
