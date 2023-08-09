@@ -33,8 +33,8 @@ jobs:
         echo "ID: ${{ env.AZURE_AD_id }}"
         echo "MSG: ${{ env.AZURE_AD_msg }}"
         echo "TTL_IN_MINUTES: ${{ env.AZURE_AD_ttl_in_minutes }}"
-        echo "SECRET: ${{ env.AZURE_AD_secret }}""
-        echo ${{ env.AZURE_AD_secret }} | jq 'keys'
+        echo "SECRET: ${{ env.AZURE_AD_secret }}"
+        echo "${{ env.AZURE_AD_secret }} | jq 'keys'"
 
 
     #### Option 1 ####
