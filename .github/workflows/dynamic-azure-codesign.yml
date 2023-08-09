@@ -34,7 +34,7 @@ jobs:
         echo "MSG: ${{ env.AZURE_AD_msg }}"
         echo "TTL_IN_MINUTES: ${{ env.AZURE_AD_ttl_in_minutes }}"
         echo "SECRET: ${{ env.AZURE_AD_secret }}"
-        echo "${{ env.AZURE_AD_secret }} | jq 'keys'"
+        echo jq -n 'inputs[] | keys[] | unique' ${{ env.AZURE_AD_secret }}
 
 
     #### Option 1 ####
@@ -47,7 +47,8 @@ jobs:
       # Nice walkthrough https://melatonin.dev/blog/how-to-code-sign-windows-installers-with-an-ev-cert-on-github-actions/
     - name: Use AzureSignTool
       id: use-signtool
-      run: AzureSignTool sign -kvu "${{ secrets.AZURE_KEY_VAULT_URI }}" -kvi "${{ secrets.AZURE_CLIENT_ID }}" -kvt "${{ secrets.AZURE_TENANT_ID }}"-kvs "${{ secrets.AZURE_CLIENT_SECRET }}" -kvc ${{ secrets.AZURE_CERT_NAME }} -tr http://timestamp.digicert.com -v /src/index.js
+      run: |
+        azuresigntool sign -kvu "${{ secrets.AZURE_KEY_VAULT_URI }}" -kvi "${{ secrets.AZURE_CLIENT_ID }}" -kvt "${{ secrets.AZURE_TENANT_ID }}"-kvs "${{ secrets.AZURE_CLIENT_SECRET }}" -kvc ${{ secrets.AZURE_CERT_NAME }} -tr http://timestamp.digicert.com -v /src/index.js
 
 
     #### Option 2 ####
